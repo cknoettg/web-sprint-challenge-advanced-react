@@ -22,21 +22,69 @@ You will also need to build the two tests in the `CheckoutForm.test.js` file and
 
 ### Commits
 
-Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and your team lead as the evaluate your solution
+Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and your team lead as the evaluate your solution.
 
 ## Interview Questions
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how to build stateful class components.
+State is actually part of the constructor for classes that extend
+  React.Component, so you could set up simple state by doing
+  something like:
+
+class Foo extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      message: "Hello world"
+    };
+  }
+
+  render() {
+    return (<div>{this.state.message}</div>);
+  } 
+
+}
 
 2. Describe the different phases of the component lifecycle.
+The three phases are Render, Pre-Commit, and Commit
+Render mounts and updates elements onto the DOM
+Pre-commit reads the DOM
+Commit allows you to work with the DOM
 
 3. Demonstrate an understanding of class component lifecycle methods.
+constructor and render methods are required
+Then there is a Mounting, Updating and Unmounting cycle including:
+componentDidMount()
+componentDidUpdate()
+componentWillUnmount()
+constructor is part of Mounting, render is part of Mounting and Updating
 
 4. Define stateful logic.
+Stateful logic is a function that alters state or data. When state is passed outside a component, it is now props.
 
 5. Describe how to test a React component with React Testing Library.
+react-testing-library is built into React now, and allows us to:
+arrange - making our code in a way that is testable and enables
+  planning for testing
+act - see if our test works
+assert - check to see if our output matches the expected output
+To test the render function, we could do something like:
+test("renders App without crashing", () => {
+  render(<App />);
+});
+
+To test whether a firstName field in a form works:
+test("testing first name field in form", async () => {
+  // Arrange
+  const { getByText } = render(<Greeting />);
+  // Act
+  const firstName = getByText(/first name/i);
+  // Assert
+  expect(firstName).toBeInTheDocument();
+});
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
