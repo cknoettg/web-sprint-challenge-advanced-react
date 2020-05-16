@@ -15,8 +15,13 @@ export default class PlantList extends Component {
   componentDidMount() {
     fetch('http://localhost:3333/plants')
       .then(response => response.json())
-      .then(response.data.map( datum => this.setState({datum})))
-      console.log(this.state);
+      .then(data => 
+        this.setState({ 
+          plants: response.data.map( datum => {datum})
+          //let plantArray = (response.data.map( datum => this.setState({datum})))
+        })
+      )
+      console.log(plants);
   }
   
 
