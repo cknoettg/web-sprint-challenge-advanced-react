@@ -42,37 +42,37 @@ const CheckoutForm = (props) => {
           First Name:
           <input
             name="firstName"
-            value={values.firstName}
-            onChange={handleChanges}
+            value={this.firstName}
+            onChange={useForm.handleChanges}
           />
         </label>
         <label>
           Last Name:
           <input
             name="lastName"
-            value={values.lastName}
-            onChange={handleChanges}
+            value={this.lastName}
+            onChange={useForm.handleChanges}
           />
         </label>
         <label>
           Address:
           <input
             name="address"
-            value={values.address}
-            onChange={handleChanges}
+            value={this.address}
+            onChange={useForm.handleChanges}
           />
         </label>
         <label>
           City:
-          <input name="city" value={values.city} onChange={handleChanges} />
+          <input name="city" value={this.city} onChange={useForm.handleChanges} />
         </label>
         <label>
           State:
-          <input name="state" value={values.state} onChange={handleChanges} />
+          <input name="state" value={this.state} onChange={useForm.handleChanges} />
         </label>
         <label>
           Zip:
-          <input name="zip" value={values.zip} onChange={handleChanges} />
+          <input name="zip" value={this.zip} onChange={useForm.handleChanges} />
         </label>
         <button>Checkout</button>
       </form>
@@ -86,11 +86,11 @@ const CheckoutForm = (props) => {
           <br />
           <br />
           <p>
-            {values.firstName} {values.lastName}
+            {this.firstName} {this.lastName}
           </p>
-          <p>{values.address}</p>
+          <p>{this.address}</p>
           <p>
-            {values.city}, {values.state} {values.zip}
+            {this.city}, {this.state} {this.zip}
           </p>
         </div>
       )}

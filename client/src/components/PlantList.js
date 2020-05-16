@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { response } from "express";
+//import { response } from "express";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -13,16 +13,21 @@ export default class PlantList extends Component {
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
-  // componentDidMount() {
-  //   axios.get('http://localhost:3333/plants')
-  //     .then(res => 
-  //       console.log(res),
-  //       this.setState({ plants: res.name }))
-  //     .catch((error) => {console.log("my dubious error: ", error)})
-  // }
+  componentDidMount() {
+    axios.get('http://localhost:3333/plants')
+      // .then(response => response.json(),
+      // this.setState({plants: response}))
+      .then(response => 
+        this.setState({ plants: response[0].plantsData }))
+      .catch((error) => {console.log("my dubious error: ", error)})
+  
+    {console.log(this.state.plants)}
+  }
+
+
   
   // console.log(response.data);
-  // console.log(plants);
+  //console.log(this.state.plants)
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
