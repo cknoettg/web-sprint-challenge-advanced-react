@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 //import { response } from "express";
+// the above line auto-added itself
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -15,16 +16,13 @@ export default class PlantList extends Component {
   //   - set the returned plants array to this.state.plants
   componentDidMount() {
     axios.get('http://localhost:3333/plants')
-      // .then(response => response.json(),
-      // this.setState({plants: response}))
-      .then(response => 
-        this.setState({ plants: response[0].plantsData }))
+      .then(res=>{
+        console.log(res.data.plantsData)
+        this.setState({ plants: res.data.plantsData })
+      })
       .catch((error) => {console.log("my dubious error: ", error)})
-  
-    {console.log(this.state.plants)}
-  }
-
-
+      
+  } 
   
   // console.log(response.data);
   //console.log(this.state.plants)

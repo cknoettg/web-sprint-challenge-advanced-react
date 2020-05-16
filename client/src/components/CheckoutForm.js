@@ -18,6 +18,7 @@ const CheckoutForm = (props) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   //const [values, setValues] = useState(initialValue);
 
+  //TODO: collapse this into one state
   const [firstName,setFirstName] = useForm('');
   const [lastName,setLastName] = useForm('');
   const [address,setAddress] = useForm('');
@@ -42,7 +43,7 @@ const CheckoutForm = (props) => {
           First Name:
           <input
             name="firstName"
-            value={this.firstName}
+            value={firstName}
             onChange={useForm.handleChanges}
           />
         </label>
@@ -50,7 +51,7 @@ const CheckoutForm = (props) => {
           Last Name:
           <input
             name="lastName"
-            value={this.lastName}
+            value={lastName}
             onChange={useForm.handleChanges}
           />
         </label>
@@ -58,21 +59,21 @@ const CheckoutForm = (props) => {
           Address:
           <input
             name="address"
-            value={this.address}
+            value={address}
             onChange={useForm.handleChanges}
           />
         </label>
         <label>
           City:
-          <input name="city" value={this.city} onChange={useForm.handleChanges} />
+          <input name="city" value={city} onChange={useForm.handleChanges} />
         </label>
         <label>
           State:
-          <input name="state" value={this.state} onChange={useForm.handleChanges} />
+          <input name="state" value={state} onChange={useForm.handleChanges} />
         </label>
         <label>
           Zip:
-          <input name="zip" value={this.zip} onChange={useForm.handleChanges} />
+          <input name="zip" value={zip} onChange={useForm.handleChanges} />
         </label>
         <button>Checkout</button>
       </form>
@@ -86,11 +87,11 @@ const CheckoutForm = (props) => {
           <br />
           <br />
           <p>
-            {this.firstName} {this.lastName}
+            {firstName} {lastName}
           </p>
-          <p>{this.address}</p>
+          <p>{address}</p>
           <p>
-            {this.city}, {this.state} {this.zip}
+            {city}, {state} {zip}
           </p>
         </div>
       )}
