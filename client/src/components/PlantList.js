@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { response } from "express";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -13,18 +14,15 @@ export default class PlantList extends Component {
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
   componentDidMount() {
-    fetch('http://localhost:3333/plants')
-      .then(response => response.json())
-      .then(data => 
-        this.setState({ 
-          plants: response.data.map( datum => {datum})
-          //let plantArray = (response.data.map( datum => this.setState({datum})))
-        })
-      )
-      console.log(plants);
+    axios.get('http://localhost:3333/plants')
+      .then(res => 
+        console.log(res),
+        this.setState({ plants: res.name }))
+      .catch((error) => {console.log("my dubious error: ", error)})
   }
   
-
+  // console.log(response.data);
+  // console.log(plants);
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
