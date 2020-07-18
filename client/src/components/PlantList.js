@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import axios from "axios";
+//import { response } from "express";
+// the above line auto-added itself
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
-
+  constructor() {
+    super();
+    this.state = {
+      plants: []
+    };
+  }
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
-
+  componentDidMount() {
+    axios.get('http://localhost:3333/plants')
+      .then(res=>{
+        console.log(res.data.plantsData)
+        this.setState({ plants: res.data.plantsData })
+      })
+      .catch((error) => {console.log("my dubious error: ", error)})
+      
+  } 
+  
+  // console.log(response.data);
+  //console.log(this.state.plants)
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
